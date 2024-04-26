@@ -11,6 +11,11 @@
         "depends": ["openssl"],
         "desktopTemplate": "./template/clash-verge.desktop"
       }
-    }
+    },
+    "windows": [
+      {
+        "decorations": false
+      }
+    ]
   }
 }
