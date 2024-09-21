@@ -1,6 +1,7 @@
 use crate::config::{Config, IVerge};
 use crate::core::handle;
 use crate::utils::dirs;
+use crate::log_err;
 use anyhow::{bail, Context, Result};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -125,6 +126,7 @@ pub async fn install_service(passwd: String) -> Result<()> {
 
     if !installer_path.exists() {
         bail!("installer not found");
+        log_err!(installer_path);
     }
 
     sudo(
