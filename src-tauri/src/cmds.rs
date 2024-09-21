@@ -361,11 +361,9 @@ pub fn get_network_interfaces_info() -> CmdResult<Vec<NetworkInterface>> {
 
 #[tauri::command]
 pub fn open_devtools(app_handle: tauri::AppHandle) {
-            let handle = handle::Handle::global();
-        let app_handle = handle.app_handle.lock();
-        let p = app_handle.as_ref().unwrap().path().resource_dir().unwrap();
-        println!("{}", p.display());
     if let Some(window) = app_handle.get_webview_window("main") {
+        let p = dirs::service_path().unwrap();
+        println!("{}", p.display());
         if !window.is_devtools_open() {
             window.open_devtools();
         } else {
